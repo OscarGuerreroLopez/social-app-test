@@ -3,7 +3,6 @@ import {
   AggregateNotifications,
   Notification as NotificationType
 } from "@/utils/aggregateNotifications";
-
 import notificationsData from "@/data/notifications-feed.json";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
