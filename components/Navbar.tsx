@@ -58,37 +58,37 @@ export default function Simple() {
                   {name}
                 </NavLink>
               ))}
-              {colorMode === "light" ? (
-                <MoonIcon onClick={toggleColorMode} />
-              ) : (
-                <SunIcon onClick={toggleColorMode} />
-              )}
             </HStack>
           </HStack>
           <Flex alignItems={"center"}>
-            <Menu>
-              <MenuButton
-                as={Button}
-                rounded={"full"}
-                variant={"link"}
-                cursor={"pointer"}
-                minW={0}
-              >
-                <Avatar size={"sm"} src={"/user_11.png"}>
-                  <AvatarBadge width={"1,7em"} bg="red.500">
-                    <Text fontSize={"xs"} color="white">
-                      3
-                    </Text>
-                  </AvatarBadge>
-                </Avatar>
-              </MenuButton>
-              <MenuList>
-                <MenuItem>Link 1</MenuItem>
-                <MenuItem>Link 2</MenuItem>
-                <MenuDivider />
-                <MenuItem>Link 3</MenuItem>
-              </MenuList>
-            </Menu>
+            <Stack direction={"row"} spacing={7}>
+              <Button onClick={toggleColorMode} background={colorMode}>
+                {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+              </Button>
+              <Menu>
+                <MenuButton
+                  as={Button}
+                  rounded={"full"}
+                  variant={"link"}
+                  cursor={"pointer"}
+                  minW={0}
+                >
+                  <Avatar size={"sm"} src={"/user_11.png"}>
+                    <AvatarBadge width={"1,7em"} bg="red.500">
+                      <Text fontSize={"xs"} color="white">
+                        3
+                      </Text>
+                    </AvatarBadge>
+                  </Avatar>
+                </MenuButton>
+                <MenuList>
+                  <MenuItem>Link 1</MenuItem>
+                  <MenuItem>Link 2</MenuItem>
+                  <MenuDivider />
+                  <MenuItem>Link 3</MenuItem>
+                </MenuList>
+              </Menu>
+            </Stack>
           </Flex>
         </Flex>
 
@@ -100,13 +100,6 @@ export default function Simple() {
                   {name}
                 </NavLink>
               ))}
-              <Flex justifyContent={"center"} maxWidth={"65px"}>
-                {colorMode === "light" ? (
-                  <MoonIcon onClick={toggleColorMode} />
-                ) : (
-                  <SunIcon onClick={toggleColorMode} />
-                )}
-              </Flex>
             </Stack>
           </Box>
         ) : null}
