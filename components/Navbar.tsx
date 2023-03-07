@@ -21,7 +21,7 @@ import {
 import { observer } from "mobx-react-lite";
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import NavLink from "@/components/NavLink";
-import notificationsStore from "@/stores/notifications.store";
+import NotificationsStore from "@/stores/notifications.store";
 import UserStore from "@/stores/user.store";
 
 const Links = [
@@ -71,25 +71,26 @@ function NavBar() {
                 {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
               </Button>
               <Menu>
-                <MenuButton
-                  as={Button}
-                  rounded={"full"}
-                  variant={"link"}
-                  cursor={"pointer"}
-                  minW={0}
-                >
-                  {UserStore.token && (
+                {UserStore.isLogged && (
+                  <MenuButton
+                    as={Button}
+                    rounded={"full"}
+                    variant={"link"}
+                    cursor={"pointer"}
+                    minW={0}
+                  >
                     <Avatar size={"sm"} src={"/user_11.png"}>
-                      {notificationsStore.notifications.length && (
+                      {NotificationsStore.notifications.length && (
                         <AvatarBadge width={"1,7em"} bg="red.500">
                           <Text fontSize={"xs"} color="white">
-                            {notificationsStore.notifications.length}
+                            {NotificationsStore.notifications.length}
                           </Text>
                         </AvatarBadge>
                       )}
                     </Avatar>
-                  )}
-                </MenuButton>
+                  </MenuButton>
+                )}
+
                 <MenuList>
                   <MenuItem>Link 1</MenuItem>
                   <MenuItem>Link 2</MenuItem>

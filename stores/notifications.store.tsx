@@ -1,6 +1,7 @@
 import { makeAutoObservable } from "mobx";
 import { Fetcher } from "@/utils/http";
 import { AggregatedNotification } from "@/models";
+import { BackendUrl } from "@/consts";
 
 class NotificationsStore {
   notifications: AggregatedNotification[] = [];
@@ -13,7 +14,7 @@ class NotificationsStore {
   getNotificationsFromApi = async (token: string) => {
     try {
       this.isLoading = true;
-      const apiUrl = "http://localhost:3000/api/getNotifications";
+      const apiUrl = `${BackendUrl}getNotifications`;
       const aggregatedNotificationsFromApi = await Fetcher(
         apiUrl,
         {

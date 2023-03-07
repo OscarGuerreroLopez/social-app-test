@@ -1,15 +1,20 @@
 import { makeAutoObservable } from "mobx";
 class UserStore {
-  token: string | null = null;
+  token: string | undefined;
+  avatar: string | undefined;
+  isLogged = false;
+  name = "";
 
   constructor() {
     makeAutoObservable(this);
   }
 
-  setToken(token: string) {
+  setUser(token: string, avatar: string, name: string) {
     try {
       this.token = token;
-      console.log("@@@222", this.token);
+      this.avatar = avatar;
+      this.isLogged = true;
+      this.name = name;
     } catch (error) {
       console.error(error);
     }

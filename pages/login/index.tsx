@@ -16,21 +16,17 @@ import Router from "next/router";
 import { Fetcher } from "@/utils/http";
 import { GetNotifications } from "@/utils/getNotifications";
 import UserStore from "@/stores/user.store";
+import { BackendUrl } from "@/consts";
 
 const checkLogin = async () => {
   try {
-    const result = await Fetcher("http://localhost:3000/api/login", {
+    const result = await Fetcher(`${BackendUrl}login`, {
       method: "POST"
     });
 
     const { token } = result;
 
-    if (typeof window !== "undefined") {
-      // client-side operation such as local storage.
-      localStorage.setItem("token", token);
-    }
-
-    UserStore.setToken(token);
+    UserStore.setUser(token, "/user_11.png", "John Doe");
 
     await GetNotifications(token);
     await Router.push("/notifications");
