@@ -61,7 +61,7 @@ export default function CallToActionWithAnnotation() {
                 bg: "green.500"
               }}
             >
-              <Link href={"/notifications"}>Get Started</Link>
+              <Link href={"/login"}>Get Started</Link>
             </Button>
 
             <Box>
