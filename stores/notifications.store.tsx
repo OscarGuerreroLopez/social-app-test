@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import axios from "axios";
+import { Fetcher } from "@/utils/http";
 import { AggregatedNotification } from "@/models";
 
 class NotificationsStore {
@@ -10,12 +10,19 @@ class NotificationsStore {
     makeAutoObservable(this);
   }
 
-  getNotificationsFromApi = async () => {
+  getNotificationsFromApi = async (token: string) => {
     try {
       this.isLoading = true;
-      const apiUrl = "localhost:3000/api/getNotifications";
-      const aggregatedNotificationsFromApi = await axios.get(apiUrl);
-      this.notifications = aggregatedNotificationsFromApi.data;
+      const apiUrl = "http://localhost:3000/api/getNotifications";
+      const aggregatedNotificationsFromApi = await Fetcher(
+        apiUrl,
+        {
+          method: "GET"
+        },
+        token
+      );
+      this.notifications = aggregatedNotificationsFromApi;
+
       this.isLoading = false;
     } catch (error) {
       console.error(`error ${error}`);

@@ -18,8 +18,11 @@ import {
   useColorMode,
   Heading
 } from "@chakra-ui/react";
+import { observer } from "mobx-react-lite";
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import NavLink from "@/components/NavLink";
+import notificationsStore from "@/stores/notifications.store";
+import UserStore from "@/stores/user.store";
 
 const Links = [
   { name: "Home", path: "/" },
@@ -29,7 +32,7 @@ const Links = [
   }
 ];
 
-export default function Simple() {
+function NavBar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
 
@@ -75,13 +78,17 @@ export default function Simple() {
                   cursor={"pointer"}
                   minW={0}
                 >
-                  <Avatar size={"sm"} src={"/user_11.png"}>
-                    <AvatarBadge width={"1,7em"} bg="red.500">
-                      <Text fontSize={"xs"} color="white">
-                        3
-                      </Text>
-                    </AvatarBadge>
-                  </Avatar>
+                  {UserStore.token && (
+                    <Avatar size={"sm"} src={"/user_11.png"}>
+                      {notificationsStore.notifications.length && (
+                        <AvatarBadge width={"1,7em"} bg="red.500">
+                          <Text fontSize={"xs"} color="white">
+                            {notificationsStore.notifications.length}
+                          </Text>
+                        </AvatarBadge>
+                      )}
+                    </Avatar>
+                  )}
                 </MenuButton>
                 <MenuList>
                   <MenuItem>Link 1</MenuItem>
@@ -109,3 +116,5 @@ export default function Simple() {
     </>
   );
 }
+
+export default observer(NavBar);

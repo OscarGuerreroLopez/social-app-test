@@ -12,15 +12,14 @@ import {
   useColorModeValue,
   Text
 } from "@chakra-ui/react";
-
 import Router from "next/router";
-
-import { axiosFetcher } from "@/utils/http";
+import { Fetcher } from "@/utils/http";
 import { GetNotifications } from "@/utils/getNotifications";
+import UserStore from "@/stores/user.store";
 
 const checkLogin = async () => {
   try {
-    const result = await axiosFetcher("http://localhost:3000/api/login", {
+    const result = await Fetcher("http://localhost:3000/api/login", {
       method: "POST"
     });
 
@@ -31,6 +30,8 @@ const checkLogin = async () => {
       localStorage.setItem("token", token);
     }
 
+    UserStore.setToken(token);
+
     await GetNotifications(token);
     await Router.push("/notifications");
   } catch (error) {
@@ -38,7 +39,7 @@ const checkLogin = async () => {
   }
 };
 
-export default function SimpleCard() {
+export default function LoginCard() {
   return (
     <Flex
       minH={"70vh"}

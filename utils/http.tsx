@@ -5,7 +5,7 @@ const headerConfig = (token: string, cancelToken = null) =>
     ? { headers: { Authorization: `Bearer ${token}` }, cancelToken }
     : { headers: { Authorization: `Bearer ${token}` } };
 
-export const axiosFetcher = async (
+export const Fetcher = async (
   url: string,
   config: AxiosRequestConfig = {},
   token?: string | undefined
