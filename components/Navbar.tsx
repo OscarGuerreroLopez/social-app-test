@@ -16,20 +16,23 @@ import {
   AvatarBadge,
   Text,
   useColorMode,
-  Heading
+  Heading,
+  Center
 } from "@chakra-ui/react";
 import { observer } from "mobx-react-lite";
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import NavLink from "@/components/NavLink";
 import NotificationsStore from "@/stores/notifications.store";
 import UserStore from "@/stores/user.store";
+import notifications from "@/pages/notifications";
 
 const Links = [
   { name: "Home", path: "/" },
   {
     name: "Projects",
     path: "https://github.com/OscarGuerreroLopez?tab=repositories"
-  }
+  },
+  { name: "Notifications", path: "/notifications" }
 ];
 
 function NavBar() {
@@ -79,7 +82,7 @@ function NavBar() {
                     cursor={"pointer"}
                     minW={0}
                   >
-                    <Avatar size={"sm"} src={"/user_11.png"}>
+                    <Avatar size={"sm"} src={UserStore.avatar}>
                       {NotificationsStore.notifications.length && (
                         <AvatarBadge width={"1,7em"} bg="red.500">
                           <Text fontSize={"xs"} color="white">
@@ -91,11 +94,10 @@ function NavBar() {
                   </MenuButton>
                 )}
 
-                <MenuList>
-                  <MenuItem>Link 1</MenuItem>
-                  <MenuItem>Link 2</MenuItem>
-                  <MenuDivider />
-                  <MenuItem>Link 3</MenuItem>
+                <MenuList alignItems={"center"}>
+                  {NotificationsStore.notifications.map((notification) => (
+                    <MenuItem>{notification.post.title}</MenuItem>
+                  ))}
                 </MenuList>
               </Menu>
             </Stack>
