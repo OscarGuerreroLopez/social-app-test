@@ -15,7 +15,8 @@ import {
   Stack,
   AvatarBadge,
   Text,
-  useColorMode
+  useColorMode,
+  Heading
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import NavLink from "@/components/NavLink";
@@ -45,8 +46,9 @@ export default function Simple() {
           />
           <HStack spacing={8} alignItems={"center"}>
             <Box>
-              {" "}
-              <Avatar size={"sm"} src={"/logo.png"} />
+              <Heading as="h3" size={"md"}>
+                Fatbook
+              </Heading>
             </Box>
             <HStack
               as={"nav"}
@@ -61,7 +63,7 @@ export default function Simple() {
             </HStack>
           </HStack>
           <Flex alignItems={"center"}>
-            <Stack direction={"row"} spacing={7}>
+            <Stack direction={"row"} spacing={{ base: 1, md: 3, lg: 5 }}>
               <Button onClick={toggleColorMode} background={colorMode}>
                 {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
               </Button>

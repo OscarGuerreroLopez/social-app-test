@@ -1,10 +1,10 @@
 import React from "react";
-import HomeUI from "./Home";
+import Home from "./Home";
 
 const HomeCompIndex = () => {
   return (
     <div>
-      <HomeUI></HomeUI>
+      <Home></Home>
     </div>
   );
 };

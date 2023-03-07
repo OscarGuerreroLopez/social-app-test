@@ -10,6 +10,7 @@ import {
   useColorModeValue,
   createIcon
 } from "@chakra-ui/react";
+import Link from "next/link";
 
 export default function CallToActionWithAnnotation() {
   return (
@@ -60,7 +61,7 @@ export default function CallToActionWithAnnotation() {
                 bg: "green.500"
               }}
             >
-              Get Started
+              <Link href={"/notifications"}>Get Started</Link>
             </Button>
 
             <Box>
