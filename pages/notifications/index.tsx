@@ -16,9 +16,11 @@ function index() {
 
   return (
     <Container as={"section"} maxWidth="4xl" mt={"5"}>
-      <SimpleGrid columns={3} spacing="10px" minChildWidth={"420px"}>
+      <SimpleGrid columns={3} spacing="10px" minChildWidth={"300px"}>
         {notificationsStore.notifications.map((notification) => (
-          <NotificatioCard notification={notification} />
+          <div key={notification.post.id}>
+            <NotificatioCard notification={notification} />
+          </div>
         ))}
       </SimpleGrid>
     </Container>

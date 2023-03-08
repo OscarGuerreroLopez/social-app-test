@@ -23,13 +23,7 @@ interface Props {
 
 export default function notification({ notification }: Props) {
   return (
-    <Card
-      borderTop="8px"
-      borderColor={"purple.400"}
-      bg="white"
-      marginBottom={"25px"}
-      key={notification.post.id}
-    >
+    <Card borderTop="8px" borderColor={"purple.400"} marginBottom={"25px"}>
       <CardHeader>
         <Flex gap={5}>
           <Avatar
