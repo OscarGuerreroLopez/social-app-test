@@ -24,7 +24,8 @@ import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import NavLink from "@/components/NavLink";
 import NotificationsStore from "@/stores/notifications.store";
 import UserStore from "@/stores/user.store";
-import notifications from "@/pages/notifications";
+
+import NotificationLikes from "@/components/cards/notificationsLikes";
 
 const Links = [
   { name: "Home", path: "/" },
@@ -94,10 +95,20 @@ function NavBar() {
                   </MenuButton>
                 )}
 
-                <MenuList alignItems={"center"}>
-                  {NotificationsStore.notifications.map((notification) => (
-                    <MenuItem>{notification.post.title}</MenuItem>
-                  ))}
+                <MenuList
+                  alignItems={"center"}
+                  maxW={{ base: "370px", sm: "470px", md: "800px" }}
+                >
+                  {NotificationsStore.notifications.map((notification) => {
+                    if (notification.likes.length) {
+                      return (
+                        <NotificationLikes
+                          post={notification.post}
+                          likes={notification.likes}
+                        />
+                      );
+                    }
+                  })}
                 </MenuList>
               </Menu>
             </Stack>

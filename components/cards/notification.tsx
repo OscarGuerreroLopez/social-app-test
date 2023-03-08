@@ -24,11 +24,11 @@ interface Props {
 export default function notification({ notification }: Props) {
   return (
     <Card
-      key={notification.post.id}
       borderTop="8px"
       borderColor={"purple.400"}
       bg="white"
       marginBottom={"25px"}
+      key={notification.post.id}
     >
       <CardHeader>
         <Flex gap={5}>
