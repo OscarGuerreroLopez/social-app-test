@@ -1,0 +1,35 @@
+import { makeAutoObservable } from "mobx";
+import { Fetcher } from "@/utils/http";
+import { AggregatedNotification } from "@/models";
+import { BackendUrl } from "@/consts";
+
+class NotificationsStore {
+  notifications: AggregatedNotification[] = [];
+  isLoading = true;
+
+  constructor() {
+    makeAutoObservable(this);
+  }
+
+  getNotificationsFromApi = async (token: string) => {
+    try {
+      this.isLoading = true;
+      const apiUrl = `${BackendUrl}getNotifications`;
+      const aggregatedNotificationsFromApi = await Fetcher(
+        apiUrl,
+        {
+          method: "GET"
+        },
+        token
+      );
+      this.notifications = aggregatedNotificationsFromApi;
+
+      this.isLoading = false;
+    } catch (error) {
+      console.error(`error ${error}`);
+    }
+  };
+}
+
+const notificationsStore = new NotificationsStore();
+export default notificationsStore;

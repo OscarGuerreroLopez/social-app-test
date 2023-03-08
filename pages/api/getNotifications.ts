@@ -1,9 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import {
-  AggregateNotifications,
-  Notification as NotificationType
-} from "@/utils/aggregateNotifications";
-
+import { AggregateNotifications } from "@/utils/aggregateNotifications";
+import { Notification as NotificationType } from "@/models";
 import notificationsData from "@/data/notifications-feed.json";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
