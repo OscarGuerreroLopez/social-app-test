@@ -33,7 +33,7 @@ export default function notificationComments({ post, comments }: Props) {
   }
 
   return (
-    <MenuItem key={post.id}>
+    <MenuItem>
       <Avatar src={avatarSrc} borderRadius={2} mr="7px" />
 
       <Heading

@@ -28,7 +28,6 @@ export default function notification({ notification }: Props) {
       borderColor={"purple.400"}
       bg="white"
       marginBottom={"25px"}
-      key={notification.post.id}
     >
       <CardHeader>
         <Flex gap={5}>

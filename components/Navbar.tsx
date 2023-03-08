@@ -101,7 +101,7 @@ function NavBar() {
                     notification.comments.length
                   ) {
                     return (
-                      <>
+                      <div key={notification.post.id}>
                         <NotificationLikes
                           post={notification.post}
                           likes={notification.likes}
@@ -111,23 +111,27 @@ function NavBar() {
                           post={notification.post}
                           comments={notification.comments}
                         />
-                      </>
+                      </div>
                     );
                   }
                   if (notification.likes.length) {
                     return (
-                      <NotificationLikes
-                        post={notification.post}
-                        likes={notification.likes}
-                      />
+                      <div key={notification.post.id}>
+                        <NotificationLikes
+                          post={notification.post}
+                          likes={notification.likes}
+                        />
+                      </div>
                     );
                   }
                   if (notification.comments.length) {
                     return (
-                      <NotificationComments
-                        post={notification.post}
-                        comments={notification.comments}
-                      />
+                      <div key={notification.post.id}>
+                        <NotificationComments
+                          post={notification.post}
+                          comments={notification.comments}
+                        />
+                      </div>
                     );
                   }
                 })}
