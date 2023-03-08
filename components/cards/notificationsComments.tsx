@@ -24,14 +24,13 @@ export default function notificationComments({ post, comments }: Props) {
         comments.length === 1 ? "" : ", "
       } `;
     } else {
-      commentMembers = `${commentMembers} and ${
-        comments.length + 1 - commentsCounter
-      }  others `;
+      const theOthers = comments.length + 1 - commentsCounter;
+      commentMembers = `${commentMembers} and  ${theOthers}  ${
+        theOthers === 1 ? "other" : "others"
+      } `;
       break;
     }
   }
-
-  commentMembers = `${commentMembers} `;
 
   return (
     <MenuItem key={post.id}>

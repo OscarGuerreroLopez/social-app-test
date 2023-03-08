@@ -81,7 +81,7 @@ export default function CallToActionWithAnnotation() {
                 top={"-15px"}
                 transform={"rotate(10deg)"}
               >
-                Start or click on your avatar
+                Click to start
               </Text>
             </Box>
           </Stack>

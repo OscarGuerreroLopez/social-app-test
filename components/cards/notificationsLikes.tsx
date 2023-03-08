@@ -24,14 +24,13 @@ export default function notifictionsLikes({ post, likes }: Props) {
         likes.length === 1 ? "" : ", "
       } `;
     } else {
-      likeMembers = `${likeMembers} and ${
-        likes.length + 1 - likesCounter
-      }  others `;
+      const theOthers = likes.length + 1 - likesCounter;
+      likeMembers = `${likeMembers} and ${theOthers}  ${
+        theOthers === 1 ? "other" : "others"
+      } `;
       break;
     }
   }
-
-  likeMembers = `${likeMembers} `;
 
   return (
     <MenuItem key={post.id}>
