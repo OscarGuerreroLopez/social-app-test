@@ -26,6 +26,7 @@ import NotificationsStore from "@/stores/notifications.store";
 import UserStore from "@/stores/user.store";
 
 import NotificationLikes from "@/components/cards/notificationsLikes";
+import NotificationComments from "@/components/cards/notificationsComments";
 
 const Links = [
   { name: "Home", path: "/" },
@@ -105,6 +106,14 @@ function NavBar() {
                         <NotificationLikes
                           post={notification.post}
                           likes={notification.likes}
+                        />
+                      );
+                    }
+                    if (notification.comments.length) {
+                      return (
+                        <NotificationComments
+                          post={notification.post}
+                          comments={notification.comments}
                         />
                       );
                     }

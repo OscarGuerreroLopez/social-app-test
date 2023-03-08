@@ -4,6 +4,11 @@ export interface User {
   avatar?: string;
 }
 
+export interface Comment {
+  user: User;
+  commentText: string;
+}
+
 export interface Post {
   id: string;
   title: string;
@@ -30,5 +35,5 @@ export type Notification = LikeNotification | CommentNotification;
 export interface AggregatedNotification {
   post: Post;
   likes: User[];
-  comments: { user: User; commentText: string }[];
+  comments: Comment[];
 }

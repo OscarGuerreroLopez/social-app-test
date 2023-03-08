@@ -1,13 +1,11 @@
-import { User, Post } from "@/models";
 import { MenuItem, Avatar, Text, Heading } from "@chakra-ui/react";
+import { User, Post } from "@/models";
+import { Truncate } from "@/utils/truncate";
 
 interface Props {
   post: Post;
   likes: User[];
 }
-
-const truncate = (input: string) =>
-  input.length > 15 ? `${input.substring(0, 35)}...` : input;
 
 export default function notifictionsLikes({ post, likes }: Props) {
   let avatarSrc: string | undefined;
@@ -27,7 +25,7 @@ export default function notifictionsLikes({ post, likes }: Props) {
       } `;
     } else {
       likeMembers = `${likeMembers} and ${
-        likes.length - likesCounter
+        likes.length + 1 - likesCounter
       }  others `;
       break;
     }
@@ -47,7 +45,7 @@ export default function notifictionsLikes({ post, likes }: Props) {
       >
         {likeMembers}
         <Text as={"span"} color={"gray.500"}>
-          liked your post "${truncate(post.title)}"
+          liked your post "{Truncate(post.title)}"
         </Text>
       </Heading>
     </MenuItem>
