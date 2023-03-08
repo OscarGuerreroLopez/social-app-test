@@ -1,38 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Social App Test
 
-## Getting Started
+This is an entry assignment test done with next.js with a little backend to provide with a notification feed
+I used `create-next-app` to rapidly start the application, there are better approaches, but just for the shake of this demonstration I went the easy way.
 
-First, run the development server:
+## Installation
+
+Use the package manager npm to install the app.
+
+```bash
+npm install
+```
+
+## Run
+
+The easiest way to run this project on a local machine is by running:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+You can also run it by building first and then running it:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm start
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+application will run on port 3000. if you need to run it on a different port just add `-p 3001`to the start up command
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Usage
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+After running the commands above you should be able to easily navigate, At first there is a little landing page with some instructions, then there will be a fake login page. All you have to do is to click on Sign in to go to the notifications page.
 
-## Learn More
+You will notice the avatar will not show on the navbar until you login. The avatar will show a badge with all the active notifications and you should be able to click it and see the comments and likes that you have.
 
-To learn more about Next.js, take a look at the following resources:
+I used mobx for state management, something fast, reactive and minimal to serve the purpose of this test. I could argue that perhaps redux would have been a better solution.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Backend is minimal, I have better examples of a backend implementation on my repo
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## To be done
 
-## Deploy on Vercel
+This little app is far from being production ready, it was done in a couple of days for the assessment test , login is fake, better authentication and authorization should be implemented right, for example
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Repos that implement a proper BE can be found at:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[https://github.com/OscarGuerreroLopez/getfit](https://github.com/OscarGuerreroLopez/getfit)
+
+[https://github.com/OscarGuerreroLopez/account-test](https://github.com/OscarGuerreroLopez/account-test)
