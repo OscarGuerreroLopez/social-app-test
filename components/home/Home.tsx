@@ -45,6 +45,20 @@ export default function CallToActionWithAnnotation() {
             in a web server that exposes at least one endpoint, and a UI that
             consumes that endpoint(s).
           </Text>
+          <Text color={"gray.500"}>
+            The notification feed is from a hypothetical social website that
+            allows users to write posts, like posts and comment on posts. The
+            notifications can be of two types: Like and Comment. Like indicates
+            that one user liked a user's post and Comment indicates that one
+            user commented on a user's post.
+          </Text>
+          <Text color={"gray.500"}>
+            The notifications should at minimum be aggregated per type and post,
+            you'll be provided with a file containing a JSON of the
+            notifications feed and another file showing how the notifications
+            are expected to be aggregated. Please note that the order in which
+            the notifications are served or aggregated is irrelevant.
+          </Text>
           <Stack
             direction={"column"}
             spacing={3}

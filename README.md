@@ -3,6 +3,8 @@
 This is an entry assignment test done with next.js with a little backend to provide with a notification feed
 I used `create-next-app` to rapidly start the application, there are better approaches, but just for the shake of this demonstration I went the easy way.
 
+It is responsive!!!!!!!
+
 ## Installation
 
 Use the package manager npm to install the app.
