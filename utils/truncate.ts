@@ -1,2 +1,2 @@
 export const Truncate = (input: string) =>
-  input.length > 15 ? `${input.substring(0, 35)}...` : input;
+  input.length > 45 ? `${input.substring(0, 45)}...` : input;
