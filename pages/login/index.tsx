@@ -10,13 +10,15 @@ import {
   Button,
   Heading,
   useColorModeValue,
-  Text
+  Text,
+  useToast
 } from "@chakra-ui/react";
 import Router from "next/router";
 import { Fetcher } from "@/utils/http";
 import { GetNotifications } from "@/utils/getNotifications";
 import UserStore from "@/stores/user.store";
 import { BackendUrl } from "@/consts";
+import { LockIcon } from "@chakra-ui/icons";
 
 const checkLogin = async () => {
   try {
@@ -36,6 +38,33 @@ const checkLogin = async () => {
 };
 
 export default function LoginCard() {
+  const toast = useToast();
+
+  const showToast = () => {
+    toast({
+      title: "Did you forget your password?",
+      description: "Bad luck, we don't know your password either",
+      duration: 5000,
+      isClosable: true,
+      status: "success",
+      position: "bottom",
+      icon: <LockIcon />
+    });
+  };
+
+  const showRememberToast = () => {
+    toast({
+      title: "You want to be remembered?",
+      description:
+        "This is not implemented, so we will not remember you for now",
+      duration: 5000,
+      isClosable: true,
+      status: "success",
+      position: "bottom",
+      icon: <LockIcon />
+    });
+  };
+
   return (
     <Flex
       minH={"70vh"}
@@ -76,8 +105,18 @@ export default function LoginCard() {
                 align={"start"}
                 justify={"space-between"}
               >
-                <Checkbox>Remember me</Checkbox>
-                <Link color={"blue.400"}>Forgot password?</Link>
+                <Checkbox
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      showRememberToast();
+                    }
+                  }}
+                >
+                  Remember me
+                </Checkbox>
+                <Link color={"blue.400"} onClick={showToast}>
+                  Forgot password?
+                </Link>
               </Stack>
               <Button
                 bg={"blue.400"}
