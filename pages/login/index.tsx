@@ -67,7 +67,7 @@ export default function LoginCard() {
 
   return (
     <Flex
-      minH={"70vh"}
+      minH={"100vh"}
       align={"center"}
       justify={"center"}
       bg={useColorModeValue("gray.50", "gray.800")}
