@@ -21,7 +21,7 @@ interface Props {
   notification: AggregatedNotification;
 }
 
-export default function notification({ notification }: Props) {
+const notification: React.FC<Props> = ({ notification }): JSX.Element => {
   return (
     <Card borderTop="8px" borderColor={"purple.400"} marginBottom={"25px"}>
       <CardHeader>
@@ -67,4 +67,6 @@ export default function notification({ notification }: Props) {
       </CardFooter>
     </Card>
   );
-}
+};
+
+export default notification;
