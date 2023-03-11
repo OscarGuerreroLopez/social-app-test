@@ -37,3 +37,13 @@ export interface AggregatedNotification {
   likes: User[];
   comments: Comment[];
 }
+
+export interface TextNotifications {
+  postId: string;
+  postTitle: string;
+  user: {
+    name: string;
+    avatar: string | undefined;
+  }[];
+  text: string;
+}
