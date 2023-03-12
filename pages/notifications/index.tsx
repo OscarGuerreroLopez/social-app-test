@@ -19,17 +19,22 @@ function index() {
   };
 
   return (
-    <Container as={"section"} maxWidth="4xl" mt={"5"}>
-      <SimpleGrid columns={3} spacing="20px" minChildWidth={"300px"}>
-        {notificationsStore.notifications.map((notification) => (
-          <NotificatioCard
-            notification={notification}
-            key={notification.post.id}
-            clikedEvent={() => clickedNotification(notification.post.id)}
-          />
-        ))}
-      </SimpleGrid>
-    </Container>
+    <>
+      {" "}
+      {UserStore.token && (
+        <Container as={"section"} maxWidth="4xl" mt={"5"}>
+          <SimpleGrid columns={3} spacing="20px" minChildWidth={"300px"}>
+            {notificationsStore.notifications.map((notification) => (
+              <NotificatioCard
+                notification={notification}
+                key={notification.post.id}
+                clikedEvent={() => clickedNotification(notification.post.id)}
+              />
+            ))}
+          </SimpleGrid>
+        </Container>
+      )}
+    </>
   );
 }
 

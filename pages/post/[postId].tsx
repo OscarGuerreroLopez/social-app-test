@@ -9,7 +9,14 @@ import {
   Stack,
   useColorModeValue,
   Avatar,
-  Flex
+  Flex,
+  Card,
+  CardBody,
+  CardHeader,
+  Divider,
+  VStack,
+  SimpleGrid,
+  Center
 } from "@chakra-ui/react";
 import notificationsStore from "@/stores/notifications.store";
 import UserStore from "@/stores/user.store";
@@ -109,43 +116,73 @@ const PostDetail: React.FC<Props> = (): JSX.Element => {
     (notification) => notification.post.id === postId
   );
 
-  // return <Text>{notification?.post.title}</Text>;
-  if (UserStore.token) {
-    return (
-      <Box bg={useColorModeValue("gray.100", "gray.700")}>
-        <Container maxW={"7xl"} py={16} as={Stack} spacing={12}>
-          <Stack spacing={0} align={"center"}>
-            <Heading>{notification?.post.title}</Heading>
-            <Text>
-              {" "}
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor
-              neque sed imperdiet nibh lectus feugiat nunc sem.
-            </Text>
-          </Stack>
-          <Stack
-            direction={{ base: "column", md: "row" }}
-            spacing={{ base: 10, md: 4, lg: 10 }}
-            justify="center"
-          >
-            {notification?.comments.map((comment) => (
-              <Testimonial key={`${comment.user}.${comment.commentText}`}>
-                <TestimonialContent>
-                  <TestimonialText>{comment.commentText}</TestimonialText>
-                </TestimonialContent>
-                <TestimonialAvatar
-                  src={comment.user.avatar}
-                  name={comment.user.name}
-                  title={comment.user.id}
-                />
-              </Testimonial>
-            ))}
-          </Stack>
-        </Container>
-      </Box>
-    );
-  }
+  return (
+    <>
+      {UserStore.token && (
+        <>
+          <Box>
+            <Container maxW={"7xl"} py={16} as={Stack} spacing={12}>
+              <Stack spacing={0} align={"center"}>
+                <Heading>{notification?.post.title}</Heading>
+                <Text>
+                  {" "}
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Auctor neque sed imperdiet nibh lectus feugiat nunc sem.
+                </Text>
+              </Stack>
+              <Stack
+                direction={{ base: "column", md: "row" }}
+                spacing={{ base: 10, md: 4, lg: 10 }}
+                justify="center"
+              >
+                {notification?.comments.map((comment) => (
+                  <Testimonial key={`${comment.user}.${comment.commentText}`}>
+                    <TestimonialContent>
+                      <TestimonialText>{comment.commentText}</TestimonialText>
+                    </TestimonialContent>
+                    <TestimonialAvatar
+                      src={comment.user.avatar}
+                      name={comment.user.name}
+                      title={comment.user.id}
+                    />
+                  </Testimonial>
+                ))}
+              </Stack>
+            </Container>
+          </Box>
+          {notification?.likes.length && (
+            <>
+              <Center>
+                <Heading fontSize={{ sm: "1xl", md: "3xl", lg: "4xl" }}>
+                  People that liked your post
+                </Heading>
+              </Center>
 
-  return <></>;
+              <SimpleGrid
+                columns={3}
+                spacing="10px"
+                minChildWidth={"400px"}
+                margin="10px"
+              >
+                {notification.likes.map((like) => (
+                  <Card
+                    key={`${notification.post.id}.${notification}`}
+                    borderTop="8px"
+                    borderColor={"purple.400"}
+                    bg="white"
+                    marginBottom={"25px"}
+                    align="center"
+                  >
+                    like
+                  </Card>
+                ))}
+              </SimpleGrid>
+            </>
+          )}
+        </>
+      )}
+    </>
+  );
 };
 
 export default observer(PostDetail);
