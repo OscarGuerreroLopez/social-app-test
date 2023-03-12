@@ -133,7 +133,7 @@ const PostDetail: React.FC<Props> = (): JSX.Element => {
                       <TestimonialText>{comment.commentText}</TestimonialText>
                     </TestimonialContent>
                     <TestimonialAvatar
-                      src={comment.user.avatar}
+                      src={`/${comment.user.avatar}`}
                       name={comment.user.name}
                       title={comment.user.id}
                     />
@@ -165,7 +165,8 @@ const PostDetail: React.FC<Props> = (): JSX.Element => {
                     marginBottom={"25px"}
                     align="center"
                   >
-                    {like.name || "Unknown user"}
+                    <Avatar src={`/${like.avatar}`} />
+                    <Text>{like.name || "Unknown user"}</Text>
                   </Card>
                 ))}
               </SimpleGrid>
