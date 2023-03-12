@@ -135,7 +135,7 @@ const PostDetail: React.FC<Props> = (): JSX.Element => {
                     <TestimonialAvatar
                       src={`/${comment.user.avatar}`}
                       name={comment.user.name}
-                      title={comment.user.id}
+                      title={`Software Engineer`}
                     />
                   </Testimonial>
                 ))}
@@ -161,7 +161,6 @@ const PostDetail: React.FC<Props> = (): JSX.Element => {
                     key={`${notification.post.id}.${notification}`}
                     borderTop="8px"
                     borderColor={"purple.400"}
-                    bg="white"
                     marginBottom={"25px"}
                     align="center"
                   >
