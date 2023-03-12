@@ -29,14 +29,6 @@ const Testimonial = ({ children }: { children: ReactNode }) => {
   return <Box>{children}</Box>;
 };
 
-const TestimonialHeading = ({ children }: { children: ReactNode }) => {
-  return (
-    <Heading as={"h3"} fontSize={"xl"}>
-      {children}
-    </Heading>
-  );
-};
-
 const TestimonialText = ({ children }: { children: ReactNode }) => {
   return (
     <Text
@@ -150,7 +142,7 @@ const PostDetail: React.FC<Props> = (): JSX.Element => {
               </Stack>
             </Container>
           </Box>
-          {notification?.likes.length && (
+          {notification?.likes.length ? (
             <>
               <Center>
                 <Heading fontSize={{ sm: "1xl", md: "3xl", lg: "4xl" }}>
@@ -173,11 +165,13 @@ const PostDetail: React.FC<Props> = (): JSX.Element => {
                     marginBottom={"25px"}
                     align="center"
                   >
-                    like
+                    {like.name || "Unknown user"}
                   </Card>
                 ))}
               </SimpleGrid>
             </>
+          ) : (
+            <></>
           )}
         </>
       )}

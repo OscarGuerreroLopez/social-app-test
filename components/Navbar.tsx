@@ -16,6 +16,7 @@ import {
   useColorMode,
   Heading
 } from "@chakra-ui/react";
+import Router from "next/router";
 import { observer } from "mobx-react-lite";
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import NavLink from "@/components/NavLink";
@@ -32,6 +33,10 @@ const Links = [
   },
   { name: "Notifications", path: "/notifications" }
 ];
+
+const clickedNotification = (id: string) => {
+  Router.push(`/post/${id}`);
+};
 
 function NavBar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -102,6 +107,9 @@ function NavBar() {
                         <NotificationsNavBar
                           notification={notification}
                           key={`${notification.postId}.${notification.text}`}
+                          clikedEvent={() =>
+                            clickedNotification(notification.postId)
+                          }
                         />
                       );
                     }

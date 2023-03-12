@@ -4,9 +4,13 @@ import { Truncate } from "@/utils/truncate";
 
 interface Props {
   notification: TextNotifications;
+  clikedEvent: () => void;
 }
 
-const notifications: React.FC<Props> = ({ notification }): JSX.Element => {
+const notifications: React.FC<Props> = ({
+  notification,
+  clikedEvent
+}): JSX.Element => {
   let avatarSrc: string | undefined;
   let members = "";
   let membersCounter = 0;
@@ -32,7 +36,7 @@ const notifications: React.FC<Props> = ({ notification }): JSX.Element => {
   }
 
   return (
-    <MenuItem>
+    <MenuItem onClick={clikedEvent}>
       <Avatar src={avatarSrc} borderRadius={2} mr="7px" />
 
       <Heading
