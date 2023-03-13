@@ -29,7 +29,7 @@ export const Likes = ({ notification }: LikesProps) => {
       >
         {notification.likes.map((like) => (
           <Card
-            key={`${notification.post.id}.${notification}`}
+            key={`${notification.post.id}.${like.id}`}
             borderTop="8px"
             borderColor={"purple.400"}
             marginBottom={"25px"}

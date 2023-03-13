@@ -20,7 +20,7 @@ function index() {
 
   return (
     <>
-      {notificationsStore.isLoading ? (
+      {UserStore.token && notificationsStore.isLoading ? (
         <Center>
           <Text fontSize="6xl">Loading.....</Text>
         </Center>
