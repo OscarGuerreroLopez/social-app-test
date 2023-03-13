@@ -11,7 +11,7 @@ export default async function handler(
     await new Promise((resolve) => {
       setTimeout(() => {
         resolve("");
-      }, 200);
+      }, 1000);
     });
 
     return res.status(200).json({ token: "tokenHere" });

@@ -30,7 +30,7 @@ const checkLogin = async () => {
 
     UserStore.setUser(token, "/user_11.png", "John Doe");
 
-    await GetNotifications(token);
+    GetNotifications(token);
     await Router.push("/notifications");
   } catch (error) {
     console.error(error);

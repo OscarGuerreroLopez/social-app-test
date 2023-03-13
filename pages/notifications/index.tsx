@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 
-import { SimpleGrid, Container } from "@chakra-ui/react";
+import { SimpleGrid, Container, Text, Center } from "@chakra-ui/react";
 import Router from "next/router";
 import notificationsStore from "@/stores/notifications.store";
 import UserStore from "@/stores/user.store";
@@ -20,19 +20,24 @@ function index() {
 
   return (
     <>
-      {" "}
-      {UserStore.token && (
-        <Container as={"section"} maxWidth="4xl" mt={"5"}>
-          <SimpleGrid columns={3} spacing="20px" minChildWidth={"300px"}>
-            {notificationsStore.notifications.map((notification) => (
-              <NotificatioCard
-                notification={notification}
-                key={notification.post.id}
-                clikedEvent={() => clickedNotification(notification.post.id)}
-              />
-            ))}
-          </SimpleGrid>
-        </Container>
+      {notificationsStore.isLoading ? (
+        <Center>
+          <Text fontSize="6xl">Loading.....</Text>
+        </Center>
+      ) : (
+        UserStore.token && (
+          <Container as={"section"} maxWidth="4xl" mt={"5"}>
+            <SimpleGrid columns={3} spacing="20px" minChildWidth={"300px"}>
+              {notificationsStore.notifications.map((notification) => (
+                <NotificatioCard
+                  notification={notification}
+                  key={notification.post.id}
+                  clikedEvent={() => clickedNotification(notification.post.id)}
+                />
+              ))}
+            </SimpleGrid>
+          </Container>
+        )
       )}
     </>
   );
