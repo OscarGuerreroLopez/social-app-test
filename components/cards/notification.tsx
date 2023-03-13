@@ -19,11 +19,26 @@ import {
 
 interface Props {
   notification: AggregatedNotification;
+  clikedEvent: () => void;
 }
 
-export default function notification({ notification }: Props) {
+const notification: React.FC<Props> = ({
+  notification,
+  clikedEvent
+}): JSX.Element => {
   return (
-    <Card borderTop="8px" borderColor={"purple.400"} marginBottom={"25px"}>
+    <Card
+      borderTop="8px"
+      borderColor={"purple.400"}
+      marginBottom={"25px"}
+      sx={{
+        ":hover": {
+          cursor: "pointer",
+          transform: "scale3d(1.05, 1.05, 1)"
+        }
+      }}
+      onClick={clikedEvent}
+    >
       <CardHeader>
         <Flex gap={5}>
           <Avatar
@@ -67,4 +82,6 @@ export default function notification({ notification }: Props) {
       </CardFooter>
     </Card>
   );
-}
+};
+
+export default notification;

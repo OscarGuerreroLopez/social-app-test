@@ -1,11 +1,14 @@
 import { makeAutoObservable } from "mobx";
 import { Fetcher } from "@/utils/http";
-import { AggregatedNotification } from "@/models";
+import { GroupLikesComments } from "@/utils/groupLikesComments";
+import { AggregatedNotification, TextNotifications } from "@/models";
 import { BackendUrl } from "@/consts";
 
 class NotificationsStore {
   notifications: AggregatedNotification[] = [];
+  notificationsNavBar: string[] = [];
   isLoading = true;
+  mergedNotifications: TextNotifications[] = [];
 
   constructor() {
     makeAutoObservable(this);
@@ -23,6 +26,11 @@ class NotificationsStore {
         token
       );
       this.notifications = aggregatedNotificationsFromApi;
+      const groupedLikesComments = GroupLikesComments(
+        aggregatedNotificationsFromApi
+      );
+
+      this.mergedNotifications = groupedLikesComments;
 
       this.isLoading = false;
     } catch (error) {

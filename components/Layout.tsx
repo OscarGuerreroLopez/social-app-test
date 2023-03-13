@@ -1,3 +1,4 @@
+import { Container } from "@chakra-ui/react";
 import { ReactNode } from "react";
 import Navbar from "./Navbar";
 
@@ -9,7 +10,7 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
   return (
     <>
       <Navbar />
-      {children}
+      <Container maxWidth="6xl">{children}</Container>
     </>
   );
 };
