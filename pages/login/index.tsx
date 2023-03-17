@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import Router from "next/router";
 import { Fetcher } from "@/utils/http";
-import { GetNotifications } from "@/utils/getNotifications";
+import { GetPosts } from "@/utils/getPosts";
 import UserStore from "@/stores/user.store";
 import { BackendUrl } from "@/consts";
 import { LockIcon } from "@chakra-ui/icons";
@@ -30,8 +30,8 @@ const checkLogin = async () => {
 
     UserStore.setUser(token, "/user_11.png", "John Doe");
 
-    GetNotifications(token);
-    await Router.push("/notifications");
+    GetPosts(token);
+    await Router.push("/posts");
   } catch (error) {
     console.error(error);
   }

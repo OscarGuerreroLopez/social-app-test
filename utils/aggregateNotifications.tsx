@@ -1,6 +1,6 @@
 import { AggregatedNotification, TextNotifications } from "@/models";
 
-export const GroupLikesComments = (
+export const AggregateNotifications = (
   notifications: AggregatedNotification[]
 ): TextNotifications[] => {
   const likesPosts: TextNotifications[] = [];

@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { AggregateNotifications } from "@/utils/aggregateNotifications";
+import { AggregatePosts } from "@/utils/aggregatePosts";
 import { Notification as NotificationType } from "@/models";
 import notificationsData from "@/data/notifications-feed.json";
 
@@ -14,11 +14,9 @@ export default async function handler(
     await new Promise((resolve) => {
       setTimeout(() => {
         resolve("");
-      }, 3000);
+      }, 2000);
     });
-    const data = AggregateNotifications(
-      notificationsData as NotificationType[]
-    );
+    const data = AggregatePosts(notificationsData as NotificationType[]);
 
     return res.status(200).send(data);
   }

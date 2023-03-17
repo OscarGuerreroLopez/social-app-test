@@ -7,7 +7,7 @@ import notificationsStore from "@/stores/notifications.store";
 import UserStore from "@/stores/user.store";
 import NotificatioCard from "@/components/cards/notification";
 
-function index() {
+const posts = () => {
   useEffect(() => {
     if (!UserStore.token) {
       Router.push("/login");
@@ -41,6 +41,6 @@ function index() {
       )}
     </>
   );
-}
+};
 
-export default observer(index);
+export default observer(posts);
