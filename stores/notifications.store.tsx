@@ -1,12 +1,11 @@
 import { makeAutoObservable } from "mobx";
 import { Fetcher } from "@/utils/http";
-import { GroupLikesComments } from "@/utils/groupLikesComments";
+import { AggregateNotifications } from "@/utils/aggregateNotifications";
 import { AggregatedNotification, TextNotifications } from "@/models";
 import { BackendUrl } from "@/consts";
 
 class NotificationsStore {
   notifications: AggregatedNotification[] = [];
-  notificationsNavBar: string[] = [];
   isLoading = true;
   mergedNotifications: TextNotifications[] = [];
 
@@ -14,10 +13,10 @@ class NotificationsStore {
     makeAutoObservable(this);
   }
 
-  getNotificationsFromApi = async (token: string) => {
+  getPostsFromApi = async (token: string) => {
     try {
       this.isLoading = true;
-      const apiUrl = `${BackendUrl}getNotifications`;
+      const apiUrl = `${BackendUrl}getPosts`;
       const aggregatedNotificationsFromApi = await Fetcher(
         apiUrl,
         {
@@ -26,11 +25,10 @@ class NotificationsStore {
         token
       );
       this.notifications = aggregatedNotificationsFromApi;
-      const groupedLikesComments = GroupLikesComments(
+
+      this.mergedNotifications = AggregateNotifications(
         aggregatedNotificationsFromApi
       );
-
-      this.mergedNotifications = groupedLikesComments;
 
       this.isLoading = false;
     } catch (error) {

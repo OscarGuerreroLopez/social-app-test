@@ -31,7 +31,7 @@ const Links = [
     name: "Projects",
     path: "https://github.com/OscarGuerreroLopez?tab=repositories"
   },
-  { name: "Notifications", path: "/notifications" }
+  { name: "Posts", path: "/posts" }
 ];
 
 const clickedNotification = (id: string) => {
@@ -86,7 +86,7 @@ function NavBar() {
                     minW={0}
                   >
                     <Avatar size={"sm"} src={UserStore.avatar}>
-                      {NotificationsStore.notifications.length && (
+                      {!!NotificationsStore.notifications.length && (
                         <AvatarBadge width={"1,7em"} bg="red.500">
                           <Text fontSize={"xs"} color="white">
                             {NotificationsStore.mergedNotifications.length}

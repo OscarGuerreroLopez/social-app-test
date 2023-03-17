@@ -1,7 +1,7 @@
 import { AggregatedNotification, Notification } from "@/models";
 
 // Group notifications by post ID
-export const AggregateNotifications = (
+export const AggregatePosts = (
   notifications: Notification[]
 ): AggregatedNotification[] => {
   const aggregated: Record<string, AggregatedNotification> = {};
